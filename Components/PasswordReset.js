@@ -24,6 +24,7 @@ import SearchedResults from './SubComponents/SearchedResults'
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import { Dimensions, Easing } from 'react-native'
+import { vh } from '../Others/ViewPorts';
 
 let deviceHeight = Dimensions.get('window').height
 class PasswordReset extends React.Component {
@@ -53,7 +54,7 @@ class PasswordReset extends React.Component {
 
             data = JSON.stringify(data);
 
-            this.props.changePassword(data);
+            this.props.passwordChange(data);
         }
         else{
 
@@ -68,7 +69,7 @@ class PasswordReset extends React.Component {
                 <TouchableWithoutFeedback style={{ zIndex: 0 }} >
 
                     <View style={styles.main} >
-                        <TouchableOpacity style={{width:30,margin:25}} onPress={()=>this.props.goToPage("Home")} >
+                        <TouchableOpacity style={{width:30,margin:25,marginTop:vh(5)}} onPress={()=>this.props.goToPage("Home")} >
                             <FontAwesome name="chevron-left" style={{fontSize: 20,padding:20 }} />
                         </TouchableOpacity>
                         <TextInput placeholder="Régi jelszó" placeholderTextColor="gray" style={[styles.input, { marginTop: "20%" }]} 

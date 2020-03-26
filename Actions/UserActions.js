@@ -51,13 +51,27 @@ export function passwordChange(data) {
 
 
 export function uploadImage(data) {
-    console.log("local image handling")
+
     return {
         type: 'server/uploadImage',
         data: data
     }
 }
 
+export function getImages(data) {
+
+    return {
+        type: 'server/getImages',
+        data: data
+    }
+}
+
+export function searchSchedule(data) {
+    return {
+        type: 'server/scheduleSearch',
+        data: data
+    }
+}
 
 export function reset() {
     return {

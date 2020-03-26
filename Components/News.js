@@ -22,6 +22,8 @@ import {
 } from 'react-native';
 import RoadCard from "./SubComponents/RoadCard";
 import LinearGradient from 'react-native-linear-gradient';
+import { vh } from '../Others/ViewPorts';
+import { getCurrentDate } from '../Others/CurrentDate';
 
 class News extends React.Component {
 
@@ -33,50 +35,51 @@ class News extends React.Component {
         };
     }
 
-    getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
-        var R = 6371; // Radius of the earth in km
-        var dLat = deg2rad(lat2 - lat1);  // deg2rad below
-        var dLon = deg2rad(lon2 - lon1);
-        var a =
-            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-            Math.sin(dLon / 2) * Math.sin(dLon / 2)
-            ;
-        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        var d = R * c; // Distance in km
-        return d;
-    }
+   getSchedule(){
+       alert("asd")
+       let data = {
+           from: this.state.from,
+           to: this.state.to,
+           date: getCurrentDate()
+       }
 
-    deg2rad(deg) {
-        return deg * (Math.PI / 180)
-    }
+       data = JSON.stringify(data);
+       this.props.searchSchedule(data);
+    
+   }
 
     render() {
-
+        let schedule = this.props.userData.schedule;
         return (
             <View >
                 <View style={styles.main} >
-                    <TouchableOpacity activeOpacity={0.8} style={{ borderColor: "lightgray", borderWidth: 2, borderRadius: 20, marginHorizontal: "10%", marginTop: 10 }} >
-                        <View style={{ padding: 10 }} >
-                            <Text style={{ color: "gray" }} >Honnan szeretnél utazni</Text>
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity activeOpacity={0.8} style={{ borderColor: "lightgray", borderWidth: 2, borderRadius: 20, marginHorizontal: "10%", marginTop: 30 }} >
-                        <View style={{ padding: 10 }} >
-                            <Text style={{ color: "gray" }} >Hova szeretnél utazni</Text>
-                        </View>
-                    </TouchableOpacity>
-            <TouchableOpacity style={{backgroundColor:"lightblue",marginHorizontal:"30%",padding:12,borderRadius:20,marginTop:30}} >
-                <Text style={{textAlign:"center"}} >Keresés</Text>
-            </TouchableOpacity>
-
-                    <View style={{ marginTop: "5%" }} >
+                    <View style={{marginTop:vh(7)}} >
+                        <TouchableOpacity activeOpacity={0.8} style={{ borderColor: "lightgray", borderWidth: 2, borderRadius: 20, marginHorizontal: "10%", marginTop: 10 }} >
+                            <View style={{ padding: 10 }} >
+                                <TextInput placeholder="Honnan szeretne utazni" placeholderTextColor="gray"
+                                onChangeText={(text)=>this.setState({from:text})} value={this.state.from} />
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity activeOpacity={0.8} style={{ borderColor: "lightgray", borderWidth: 2, borderRadius: 20, marginHorizontal: "10%", marginTop: 30 }} >
+                            <View style={{ padding: 10 }} >
+                            <TextInput placeholder="Hova szeretne utazni" placeholderTextColor="gray"
+                             onChangeText={(text)=>this.setState({to:text})} value={this.state.to} />
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: "lightblue", marginHorizontal: "30%", padding: 12, borderRadius: 20, marginTop: 30 }} 
+                         onPress={()=>this.getSchedule()} >
+                            <Text style={{ textAlign: "center" }} >Keresés</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{ marginTop: vh(3) }} >
                         <ScrollView style={{ height: "100%" }} contentContainerStyle={{ justifyContent: "center" }} horizontal >
-                          <RoadCard />
-                          <RoadCard />
-                          <RoadCard />
-                          <RoadCard />
-                          <RoadCard />
+                           {
+                               
+                               schedule ? schedule.map((e,i)=>{
+                                      return(<RoadCard key={i} fromTime={e.fromTime} toTime={e.toTime} />)
+                                })
+                             : <Text>Nincs találat</Text>
+                           }
                         </ScrollView>
                     </View>
 
@@ -101,7 +104,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         marginVertical: 20
     },
-   
+
 });
 
 export default News;

@@ -37,7 +37,7 @@ export default BottomTabNav = createBottomTabNavigator(
         }
     },
     {
-        initialRouteName: "Main",
+        initialRouteName: "News",
         headerRight: null,
       
     }

@@ -30,18 +30,20 @@ function RoadCard(props) {
                     <Text style={{ fontSize: 17 }} >Airline station</Text>
                 </View>
                 <View style={{ flexDirection: "row", justifyContent: "space-between", marginHorizontal: '5%', marginTop: 20 }} >
-                    <Text style={{ fontSize: 17 }} >Távolság:</Text>
-                    <Text style={{ fontSize: 17 }} >3000 km</Text>
+                    <Text style={{ fontSize: 17 }} >Indulás:</Text>
+                    <Text style={{ fontSize: 17 }} >{props.fromTime}</Text>
                 </View>
                 <View style={{ flexDirection: "row", justifyContent: "space-between", marginHorizontal: '5%', marginTop: 20 }} >
-                    <Text style={{ fontSize: 17 }} >Utazási idő:</Text>
-                    <Text style={{ fontSize: 17 }} >3 óra</Text>
+                    <Text style={{ fontSize: 17 }} >Érkezés:</Text>
+                    <Text style={{ fontSize: 17 }} >{props.toTime}</Text>
                 </View>
                 <View style={{ height: "30%", justifyContent: "space-around", marginTop: 20 }} >
-                    <TouchableOpacity style={{ backgroundColor: "lightblue", padding: 10, borderRadius: 20, marginHorizontal: "5%", paddingVertical: 15 }} >
+                    <TouchableOpacity style={{ backgroundColor: "lightblue", padding: 10, borderRadius: 20, marginHorizontal: "5%", paddingVertical: 15 }}
+                    >
                         <Text style={{ textAlign: "center" }} >Utazás ezzel</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: "lightblue", padding: 10, borderRadius: 20, marginHorizontal: "5%", paddingVertical: 15 }} >
+                    <TouchableOpacity style={{ backgroundColor: "lightblue", padding: 10, borderRadius: 20, marginHorizontal: "5%", paddingVertical: 15 }}
+                    >
                         <Text style={{ textAlign: "center" }} >Emberek akik ezzel utaznak</Text>
                     </TouchableOpacity>
                 </View>

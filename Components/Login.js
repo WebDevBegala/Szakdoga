@@ -64,7 +64,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <LinearGradient colors={['#0398fc', '#3b5998', '#8800ff']} style={styles.linearGradient}>
+      <LinearGradient colors={['#4849EC', '#E300FF']} style={styles.linearGradient}>
         {
           false ? <Loading /> : null
         }

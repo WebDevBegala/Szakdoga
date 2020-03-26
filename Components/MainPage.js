@@ -51,6 +51,9 @@ class MainPage extends React.Component {
         cState = Object.assign(cState, myData)
         this.setState(cState)
         console.log("A kibaszott state: ", this.state)
+        //-------------------------------------------
+        let data = {email:this.props.userData.onLogined.userData.email};
+        this.props.getImage(JSON.stringify(data));
     }
 
     search() {

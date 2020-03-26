@@ -20,9 +20,10 @@ import {
 import FriendRow from "./SubComponents/FriendRow";
 import MyMessage from "./SubComponents/MyMessage";
 import PartnerMessage from "./SubComponents/PartnerMessage";
-
+import * as ImagePicker from 'expo-image-picker';
+import * as Permissions from 'expo-permissions';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import LinearGradient from 'react-native-linear-gradient';
+import { LinearGradient } from 'expo-linear-gradient';
 import { getCurrentTime } from "../Others/CurrentDate";
 import { vw, vh } from "../Others/ViewPorts";
 

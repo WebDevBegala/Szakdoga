@@ -9,5 +9,12 @@ let min = d.getMinutes();
 }
 
 export function getCurrentDate(){
+let d = new Date();
+let day = d.getDate();
+let month = d.getMonth()+1;
+let year = d.getFullYear();
+day = day < 10 ? "0"+day : day;
+month = month < 10 ? "0"+month : month;
 
+return year+"."+month+"."+day
 }

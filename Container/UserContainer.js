@@ -1,13 +1,12 @@
 import { connect } from 'react-redux';
-import ImagesHandling from '../Components/ImagesHandling';
+import User from '../Components/User';
 import NavigationService from "../NavigationService";
 import { uploadImage,getImages } from "../Actions/UserActions";
 
 function mapStateToProps(state, props) {
-  console.log("Kibaszott props: ",state.User);
+  
     
     return {
-        userData: state.User,
        
     };
 }
@@ -15,14 +14,13 @@ function mapStateToProps(state, props) {
 function mapDispatchToProps(dispatch, props) {
     return {
         goToPage: (page) => NavigationService.navigate(page),
-        sendPictures:(img) => dispatch(uploadImage(img)),
-        getImage:(email)=>dispatch(getImages(email))
+       
     };
 }
 
-const ImagesHandlingContainer = connect(
+const UserContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(ImagesHandling);
+)(User);
 
-export default ImagesHandlingContainer;
+export default UserContainer;

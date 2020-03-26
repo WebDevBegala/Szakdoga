@@ -7,6 +7,7 @@ import ChatPageContainer from "./Container/ChatPageContainer";
 import BottomTabNav from './OtherNavigators/BottomTabNav';
 import PasswordResetContainer from "./Container/PasswordResetContainer";
 import ImagesHandlingContainer from "./Container/ImagesHandlingContainer";
+import UserContainer from "./Container/UserContainer";
 
 
 const AppNavigator = createStackNavigator(
@@ -16,11 +17,11 @@ const AppNavigator = createStackNavigator(
     Home: BottomTabNav,
     ChatPage: ChatPageContainer,
     PasswordReset: PasswordResetContainer,
-    ImagesHandling:ImagesHandlingContainer
-
+    ImagesHandling:ImagesHandlingContainer,
+    User: UserContainer
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'Home',
     defaultNavigationOptions: {
       headerLeft: 0,
       header: false
